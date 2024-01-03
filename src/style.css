@@ -9,7 +9,8 @@
 :root {
 	font-family: "Roboto", sans-serif;
 	color: black;
-	background-color: rgb(228, 227, 227);
+	/* background-color: rgb(228, 227, 227); */
+	background-color: rgb(58, 58, 58);
 }
 
 #root {
@@ -56,9 +57,23 @@ form {
 	text-align: left;
 }
 
+.form-header-container {
+	display: flex;
+}
+
+.form-header {
+	display: flex;
+	align-items: center;
+}
+
+.form-header i {
+	font-size: 22px;
+	margin: 0 10px;
+}
+
 h2 {
 	font-size: 25px;
-	padding: 10px 0;
+	/* padding: 10px 0; */
 }
 
 .input-container {
@@ -116,7 +131,17 @@ input:focus {
 	height: 950px;
 }
 
-.cv-personal-info {
+/* .cv-personal-info {
+} */
+
+.cv-personal-info :first-child {
+	font-size: 23px;
+	display: block;
+}
+
+.cv-personal-info p {
+	display: inline-block;
+	font-size: 16px;
 }
 
 .cv div {
