@@ -131,23 +131,41 @@ input:focus {
 	height: 950px;
 }
 
-/* .cv-personal-info {
-} */
-
-.cv-personal-info :first-child {
-	font-size: 23px;
-	display: block;
-}
-
-.cv-personal-info p {
-	display: inline-block;
-	font-size: 16px;
-}
-
-.cv div {
+.cv > div {
 	border: 2px red solid;
 	/* flex: 1 1 auto; */
+	/* height: fit-content; */
+}
+
+.cv-personal-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px blue solid;
+	height: 250px;
+}
+
+.cv-fullname {
+	/* border: 2px solid blue; */
+	margin-bottom: 15px;
+	font-weight: 500;
+	font-size: 25px;
+	/* display: block; */
+}
+
+.cv-contact-info {
+	display: flex;
+	font-size: 18px;
+	gap: 15px;
 	height: fit-content;
+}
+
+.cv-contact-info div {
+	display: flex;
+	gap: 5px;
+	height: fit-content;
+	align-items: center;
 }
 
 /* Footer */
