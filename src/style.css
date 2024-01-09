@@ -45,6 +45,7 @@ main div {
 	flex: 1 1;
 	max-width: 450px;
 	min-width: 250px;
+	height: fit-content;
 	/* border: 2px white solid; */
 }
 

@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import "../style.css";
 
-function Forms() {
+function PersonalInfo({ saveFormValues }) {
+  const form = "personalInfo";
   const [fullName, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
@@ -30,12 +32,31 @@ function Forms() {
     // e.preventDefault();
   }
 
-  function handlePersonalSubmit(e) {
+  function isFormFilled() {
+    return fullName.length && email.length && tel.length && address.length;
+  }
+
+  function onFormSubmit(e) {
     e.preventDefault();
+    const formData = {
+      form,
+      fullName,
+      email,
+      tel,
+      address,
+    };
+    // saveFormValues function lives (is defined) in parent becuase all
+    // forms use the same funcion therefore adhearing to DRY
+    saveFormValues(formData);
+    // reset all input fields after form submission
+    setFullname("");
+    setEmail("");
+    setTel("");
+    setAddress("");
   }
 
   return (
-    <form action="#" onSubmit={handlePersonalSubmit}>
+    <form action="#" onSubmit={onFormSubmit}>
       <div className="form-header-container">
         <div className="form-header">
           <i className="fa-solid fa-user" />
@@ -87,9 +108,9 @@ function Forms() {
           placeholder="City, Country"
         />
       </div>
-      <button type="submit" className="add">Add</button>
+      <button type="submit" className="add" disabled={!isFormFilled()}>Add</button>
     </form>
   );
 }
 
-export default Forms;
+export default PersonalInfo;
