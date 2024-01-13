@@ -2,7 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import "../style.css";
 
-function Cv({ basicFormValues }) {
+function Cv({ basicFormValues, educationFormItems }) {
   return (
     <div className="cv">
       <div className="cv-personal-info">
@@ -26,7 +26,27 @@ function Cv({ basicFormValues }) {
         </>
         )}
       </div>
-      <div />
+      <div className="cv-education">
+        {educationFormItems && (
+        <>
+          <p className="cv-education-heading">Education</p>
+          <div className="cv-education-info">
+            {educationFormItems.map((item) => (
+              <div className="education-item">
+                <div>
+                  <p className="dates">{`${item.startDate} - ${item.endDate}`}</p>
+                  <p className="location">{item.location}</p>
+                </div>
+                <div>
+                  <p className="institution">{item.school}</p>
+                  <p className="degree">{item.degree}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+        )}
+      </div>
       <div />
     </div>
   );

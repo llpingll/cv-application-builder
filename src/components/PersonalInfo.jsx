@@ -76,29 +76,29 @@ function PersonalInfo({ saveFormValues }) {
         />
       </div>
       <div className="input-container">
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">Email</label>
         <input
           value={email}
           onChange={(e) => handleChange(e)}
-          type="email"
+          type="text"
           id="email"
           name="email"
           placeholder="Johndoe@gmail.com"
         />
       </div>
       <div className="input-container">
-        <label htmlFor="tel">Phone Number:</label>
+        <label htmlFor="tel">Phone Number</label>
         <input
           value={tel}
           onChange={(e) => handleChange(e)}
-          type="tel"
+          type="text"
           id="tel"
           name="tel"
           placeholder="+555 5555 555"
         />
       </div>
       <div className="input-container">
-        <label htmlFor="address">Address:</label>
+        <label htmlFor="address">Address</label>
         <input
           value={address}
           onChange={(e) => handleChange(e)}
@@ -108,7 +108,7 @@ function PersonalInfo({ saveFormValues }) {
           placeholder="City, Country"
         />
       </div>
-      <button type="submit" className="add" disabled={!isFormFilled()}>Add</button>
+      <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
     </form>
   );
 }

@@ -34,6 +34,7 @@ main {
 	margin: 0 40px;
 	gap: 40px;
 	justify-content: center;
+	overflow: hidden;
 }
 
 main div {
@@ -42,20 +43,32 @@ main div {
 
 /* Forms */
 .forms-container {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 	flex: 1 1;
 	max-width: 450px;
 	min-width: 250px;
-	height: fit-content;
-	/* border: 2px white solid; */
+	-webkit-scrollbar: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	overflow: auto;
+	height: 100vh;
 }
 
 form {
+	display: flex;
+	flex-direction: column;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 	background-color: whitesmoke;
 	color: black;
 	border-radius: 30px;
 	padding: 20px;
 	text-align: left;
+}
+
+.forms-container::-webkit-scrollbar {
+	display: none;
 }
 
 .form-header-container {
@@ -100,16 +113,22 @@ input {
 }
 
 /* Submit button */
-.add {
+.save {
 	font-size: 18px;
 	color: aliceblue;
-	height: 45px;
+	/* height: 45px; */
+	padding: 15px 0;
 	width: 110px;
 	border: none;
 	background-color: rgb(78, 149, 255);
 	border-radius: 25px;
 	cursor: pointer;
 	margin: 15px 0 10px;
+}
+
+.save:disabled {
+	background-color: rgba(78, 149, 255, 0.651);
+	cursor: not-allowed;
 }
 
 textarea:focus,
@@ -135,38 +154,68 @@ input:focus {
 .cv > div {
 	border: 2px red solid;
 	/* flex: 1 1 auto; */
-	/* height: fit-content; */
+	height: fit-content;
 }
 
+/* CV Personal Info */
 .cv-personal-info {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 2px blue solid;
-	height: 250px;
+	flex: 0 0 115px;
+	/* height: 250px; */
 }
 
 .cv-fullname {
 	/* border: 2px solid blue; */
-	margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 16px 0;
 	font-weight: 500;
-	font-size: 25px;
-	/* display: block; */
+	font-size: 28px;
 }
 
 .cv-contact-info {
 	display: flex;
 	font-size: 18px;
 	gap: 15px;
-	height: fit-content;
 }
 
 .cv-contact-info div {
 	display: flex;
 	gap: 5px;
-	height: fit-content;
+	height: max-content;
 	align-items: center;
+}
+
+/* CV Education */
+.cv-education {
+	padding: 30px 50px;
+	border: 5px blue solid;
+}
+
+.cv-education-heading {
+	padding: 3px;
+	font-size: 20px;
+	font-weight: 600;
+	background-color: rgb(228, 227, 227);
+}
+
+.education-item {
+	display: flex;
+	font-size: 18px;
+	text-align: left;
+	gap: 28px;
+	height: fit-content;
+}
+
+.education-item > div {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	padding: 15px 0;
 }
 
 /* Footer */

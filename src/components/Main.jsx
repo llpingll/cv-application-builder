@@ -2,17 +2,27 @@
 /* eslint-disable default-case */
 /* eslint-disable react/react-in-jsx-scope */
 import "../style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PersonalInfo from "./PersonalInfo";
+import Education from "./Education";
 import Cv from "./Cv";
 
 function Main() {
   const [basicFormValues, setBasicFormValues] = useState("");
+  const [educationFormItems, setEducationFormItems] = useState([]);
+
+  useEffect(() => {
+    console.log(educationFormItems);
+  }, [educationFormItems]);
 
   function saveFormValues(obj) {
     switch (obj.form) {
       case "personalInfo":
         setBasicFormValues(obj);
+        break;
+
+      case "education":
+        setEducationFormItems([...educationFormItems, obj]);
         break;
     }
   }
@@ -24,13 +34,16 @@ function Main() {
         <PersonalInfo
           saveFormValues={saveFormValues}
         />
-        <div className="Education" />
+        <Education
+          saveFormValues={saveFormValues}
+        />
         <div className="Experience" />
       </div>
 
       <div className="cv-container">
         <Cv
           basicFormValues={basicFormValues}
+          educationFormItems={educationFormItems}
         />
       </div>
 
