@@ -73,6 +73,12 @@ form {
 
 .form-header-container {
 	display: flex;
+	align-items: center;
+}
+
+.form-header-container i {
+	margin-left: auto;
+	font-size: 28px;
 }
 
 .form-header {
@@ -112,18 +118,33 @@ input {
 	border: none;
 }
 
-/* Submit button */
-.save {
+textarea:focus,
+input:focus {
+	outline: 3px solid rgb(78, 149, 255);
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Input buttons common values */
+.save,
+.cancel,
+.delete {
 	font-size: 18px;
-	color: aliceblue;
-	/* height: 45px; */
+	color: whitesmoke;
 	padding: 15px 0;
 	width: 110px;
 	border: none;
-	background-color: rgb(78, 149, 255);
 	border-radius: 25px;
 	cursor: pointer;
 	margin: 15px 0 10px;
+}
+
+/* Save button */
+.save {
+	background-color: rgb(78, 149, 255);
 }
 
 .save:disabled {
@@ -131,9 +152,41 @@ input {
 	cursor: not-allowed;
 }
 
-textarea:focus,
-input:focus {
-	outline: 3px solid rgb(78, 149, 255);
+/* Cancel button */
+.cancel {
+	color: rgb(117, 117, 117);
+	background-color: whitesmoke;
+	border: 1px solid rgb(117, 117, 117);
+}
+
+/* Delete button */
+.delete {
+	background-color: red;
+}
+
+/* Add button */
+.add {
+	border: 6px solid rgb(228, 227, 227);
+	font-size: 18px;
+	padding: 14px 0;
+	width: 150px;
+	border-radius: 25px;
+	cursor: pointer;
+	margin-top: 20px;
+	align-self: center;
+}
+
+/* Form Item edit button */
+.edit-item {
+	border: none;
+	background-color: whitesmoke;
+	border-bottom: 6px solid rgb(228, 227, 227);
+	border-top: 6px solid rgb(228, 227, 227);
+	font-size: 18px;
+	font-weight: 600;
+	padding: 35px 0;
+	margin-top: 20px;
+	/* height: 50px; */
 }
 
 /* CV section */
@@ -216,6 +269,10 @@ input:focus {
 	flex-direction: column;
 	gap: 3px;
 	padding: 15px 0;
+}
+
+.institution {
+	font-weight: 500;
 }
 
 /* Footer */

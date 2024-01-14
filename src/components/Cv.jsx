@@ -27,12 +27,12 @@ function Cv({ basicFormValues, educationFormItems }) {
         )}
       </div>
       <div className="cv-education">
-        {educationFormItems && (
+        {educationFormItems.length > 0 && (
         <>
           <p className="cv-education-heading">Education</p>
           <div className="cv-education-info">
             {educationFormItems.map((item) => (
-              <div className="education-item">
+              <div className="education-item" key={item.id}>
                 <div>
                   <p className="dates">{`${item.startDate} - ${item.endDate}`}</p>
                   <p className="location">{item.location}</p>

@@ -36,6 +36,7 @@ function Main() {
         />
         <Education
           saveFormValues={saveFormValues}
+          educationFormItems={educationFormItems}
         />
         <div className="Experience" />
       </div>
