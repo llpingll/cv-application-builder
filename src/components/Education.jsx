@@ -6,7 +6,7 @@
 import { useState } from "react";
 import "../style.css";
 
-function Education({ saveFormValues, educationFormItems }) {
+function Education({ saveFormValues, educationFormItems, handleEducationEdit }) {
   const form = "education";
   const [school, setSchool] = useState("");
   const [degree, setDegree] = useState("");
@@ -14,7 +14,7 @@ function Education({ saveFormValues, educationFormItems }) {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [expanded, setExpanded] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [showInputs, setShowinputs] = useState(false);
 
   function handleChange(e) {
     const { name } = e.target; // Same as const name = e.target.name;
@@ -57,7 +57,6 @@ function Education({ saveFormValues, educationFormItems }) {
       location,
       startDate,
       endDate,
-      id: crypto.randomUUID(),
     };
       // saveFormValues function lives (is defined) in parent becuase all
       // forms use the same funcion therefore adhearing to DRY
@@ -68,7 +67,7 @@ function Education({ saveFormValues, educationFormItems }) {
     setLocation("");
     setStartDate("");
     setEndDate("");
-    setIsEditing(false);
+    setShowinputs(false);
   }
 
   function handleCancel() {
@@ -77,11 +76,11 @@ function Education({ saveFormValues, educationFormItems }) {
     setLocation("");
     setStartDate("");
     setEndDate("");
-    setIsEditing(false);
+    setShowinputs(false);
   }
 
   function handleDelete() {
-    setIsEditing(false);
+    setShowinputs(true);
   }
 
   return (
@@ -100,8 +99,8 @@ function Education({ saveFormValues, educationFormItems }) {
       {/* If expanded, show content */}
       {expanded && (
         <>
-          {/* If isEditing show input container */}
-          {isEditing && (
+          {/* If showInputs show input container */}
+          {showInputs && (
             <>
               <div className="input-container">
                 <label htmlFor="school">School</label>
@@ -160,22 +159,38 @@ function Education({ saveFormValues, educationFormItems }) {
               </div>
               <div className="button-container">
                 <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
-                {isEditing && (
+                {showInputs && (
                 <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
                 )}
                 <button type="button" className="delete" onClick={handleDelete}>Delete</button>
               </div>
             </>
           )}
-          {educationFormItems && (
-            <>
+          {educationFormItems && !showInputs && (
+            <div className="edit-items">
               {educationFormItems.map((item) => (
-                <button type="button" className="edit-item" key={item.id}>{item.school}</button>
+                <button
+                  type="button"
+                  className="edit-item"
+                  onClick={(() => {
+                    handleEducationEdit(educationFormItems.indexOf(item));
+                    setShowinputs(true);
+                    setSchool(item.school);
+                    setDegree(item.degree);
+                    setLocation(item.location);
+                    setStartDate(item.startDate);
+                    setEndDate(item.endDate);
+                  })}
+                  id={educationFormItems.indexOf(item)}
+                  key={crypto.randomUUID()}
+                >
+                  {item.school}
+                </button>
               ))}
-            </>
+            </div>
           )}
-          {!isEditing && (
-            <button type="button" className="add" onClick={() => setIsEditing(true)}>+ Education</button>
+          {!showInputs && (
+            <button type="button" className="add" onClick={() => setShowinputs(true)}>+ Education</button>
           )}
         </>
       )}

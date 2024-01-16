@@ -177,16 +177,27 @@ input:focus {
 }
 
 /* Form Item edit button */
+.edit-items {
+	display: flex;
+	flex-direction: column;
+}
+
 .edit-item {
 	border: none;
 	background-color: whitesmoke;
-	border-bottom: 6px solid rgb(228, 227, 227);
 	border-top: 6px solid rgb(228, 227, 227);
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 600;
-	padding: 35px 0;
+	padding: 20px 0;
+	cursor: pointer;
+}
+
+.edit-item:first-of-type {
 	margin-top: 20px;
-	/* height: 50px; */
+}
+
+.edit-item:last-of-type {
+	border-bottom: 6px solid rgb(228, 227, 227);
 }
 
 /* CV section */

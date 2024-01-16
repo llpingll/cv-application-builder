@@ -10,10 +10,17 @@ import Cv from "./Cv";
 function Main() {
   const [basicFormValues, setBasicFormValues] = useState("");
   const [educationFormItems, setEducationFormItems] = useState([]);
+  const [educationFormEdit, seteducationFormEdit] = useState(false);
+  const [educEditID, setEducEditID] = useState(null);
 
   useEffect(() => {
     console.log(educationFormItems);
   }, [educationFormItems]);
+
+  function handleEducationEdit(id) {
+    seteducationFormEdit(!educationFormEdit);
+    setEducEditID(id);
+  }
 
   function saveFormValues(obj) {
     switch (obj.form) {
@@ -22,7 +29,21 @@ function Main() {
         break;
 
       case "education":
-        setEducationFormItems([...educationFormItems, obj]);
+        // If educationFormEdit
+        if (educationFormEdit) {
+          setEducationFormItems(
+            educationFormItems.map(((item, index) => {
+              if (index === educEditID) {
+                return obj;
+              }
+              return item;
+            })),
+          );
+          seteducationFormEdit(false);
+          setEducEditID(null);
+        } else {
+          setEducationFormItems([...educationFormItems, obj]);
+        }
         break;
     }
   }
@@ -37,6 +58,7 @@ function Main() {
         <Education
           saveFormValues={saveFormValues}
           educationFormItems={educationFormItems}
+          handleEducationEdit={handleEducationEdit}
         />
         <div className="Experience" />
       </div>
