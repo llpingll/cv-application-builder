@@ -60,7 +60,7 @@ function PersonalInfo({ saveFormValues }) {
       <div className="form-header-container">
         <div className="form-header">
           <i className="fa-solid fa-user" />
-          <h2>Personal Inforamtion</h2>
+          <h2>Personal Information</h2>
         </div>
         {/* <i className="fa-solid fa-caret-down" /> */}
       </div>

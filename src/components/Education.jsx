@@ -6,7 +6,13 @@
 import { useState } from "react";
 import "../style.css";
 
-function Education({ saveFormValues, educationFormItems, handleEducationEdit }) {
+function Education({
+  saveFormValues,
+  educationFormItems,
+  handleEducationEdit,
+  educationFormEdit,
+  deleteFormValues,
+}) {
   const form = "education";
   const [school, setSchool] = useState("");
   const [degree, setDegree] = useState("");
@@ -48,6 +54,14 @@ function Education({ saveFormValues, educationFormItems, handleEducationEdit }) 
     return school.length && degree.length && location.length && startDate.length && endDate.length;
   }
 
+  function clearInputs() {
+    setSchool("");
+    setDegree("");
+    setLocation("");
+    setStartDate("");
+    setEndDate("");
+  }
+
   function onFormSubmit(e) {
     e.preventDefault();
     const formData = {
@@ -62,11 +76,7 @@ function Education({ saveFormValues, educationFormItems, handleEducationEdit }) 
       // forms use the same funcion therefore adhearing to DRY
     saveFormValues(formData);
     // reset all input fields after form submission
-    setSchool("");
-    setDegree("");
-    setLocation("");
-    setStartDate("");
-    setEndDate("");
+    clearInputs();
     setShowinputs(false);
   }
 
@@ -77,10 +87,7 @@ function Education({ saveFormValues, educationFormItems, handleEducationEdit }) 
     setStartDate("");
     setEndDate("");
     setShowinputs(false);
-  }
-
-  function handleDelete() {
-    setShowinputs(true);
+    if (educationFormEdit) handleEducationEdit(null);
   }
 
   return (
@@ -159,10 +166,20 @@ function Education({ saveFormValues, educationFormItems, handleEducationEdit }) 
               </div>
               <div className="button-container">
                 <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
-                {showInputs && (
                 <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
+                {educationFormEdit && (
+                  <button
+                    type="button"
+                    className="delete"
+                    onClick={() => {
+                      deleteFormValues();
+                      setShowinputs(false);
+                      clearInputs();
+                    }}
+                  >
+                    Delete
+                  </button>
                 )}
-                <button type="button" className="delete" onClick={handleDelete}>Delete</button>
               </div>
             </>
           )}
@@ -172,7 +189,7 @@ function Education({ saveFormValues, educationFormItems, handleEducationEdit }) 
                 <button
                   type="button"
                   className="edit-item"
-                  onClick={(() => {
+                  onClick={() => {
                     handleEducationEdit(educationFormItems.indexOf(item));
                     setShowinputs(true);
                     setSchool(item.school);
@@ -180,7 +197,7 @@ function Education({ saveFormValues, educationFormItems, handleEducationEdit }) 
                     setLocation(item.location);
                     setStartDate(item.startDate);
                     setEndDate(item.endDate);
-                  })}
+                  }}
                   id={educationFormItems.indexOf(item)}
                   key={crypto.randomUUID()}
                 >

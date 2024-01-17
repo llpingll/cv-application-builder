@@ -14,8 +14,8 @@ function Main() {
   const [educEditID, setEducEditID] = useState(null);
 
   useEffect(() => {
-    console.log(educationFormItems);
-  }, [educationFormItems]);
+    console.log(educationFormEdit);
+  }, [educationFormEdit]);
 
   function handleEducationEdit(id) {
     seteducationFormEdit(!educationFormEdit);
@@ -32,12 +32,12 @@ function Main() {
         // If educationFormEdit
         if (educationFormEdit) {
           setEducationFormItems(
-            educationFormItems.map(((item, index) => {
+            educationFormItems.map((item, index) => {
               if (index === educEditID) {
                 return obj;
               }
               return item;
-            })),
+            }),
           );
           seteducationFormEdit(false);
           setEducEditID(null);
@@ -46,6 +46,19 @@ function Main() {
         }
         break;
     }
+  }
+
+  function deleteFormValues() {
+    setEducationFormItems(
+      educationFormItems.filter((item, index) => {
+        if (index !== educEditID) {
+          return item;
+        }
+      }),
+    );
+
+    seteducationFormEdit(false);
+    setEducEditID(null);
   }
 
   return (
@@ -57,8 +70,10 @@ function Main() {
         />
         <Education
           saveFormValues={saveFormValues}
-          educationFormItems={educationFormItems}
+          deleteFormValues={deleteFormValues}
           handleEducationEdit={handleEducationEdit}
+          educationFormItems={educationFormItems} // Obj array
+          educationFormEdit={educationFormEdit} // Being edited boolean
         />
         <div className="Experience" />
       </div>
