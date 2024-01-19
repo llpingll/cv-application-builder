@@ -6,6 +6,7 @@
 import { useState } from "react";
 import "../style.css";
 import InputContainer from "./InputContainer";
+import ButtonContainer from "./ButtonContainer";
 
 function Education({
   saveFormValues,
@@ -155,23 +156,15 @@ function Education({
                 placeholder="Enter End Date"
                 label="End Date"
               />
-              <div className="button-container">
-                <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
-                <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
-                {educationFormEdit && (
-                  <button
-                    type="button"
-                    className="delete"
-                    onClick={() => {
-                      deleteFormValues();
-                      setShowinputs(false);
-                      clearInputs();
-                    }}
-                  >
-                    Delete
-                  </button>
-                )}
-              </div>
+              <ButtonContainer
+                // Props can be shorthanded as below instead of isFormFilled={isFormFilled}
+                isFormFilled={() => isFormFilled}
+                handleCancel={() => handleCancel}
+                clearInputs={() => clearInputs}
+                educationFormEdit={educationFormEdit}
+                deleteFormValues={deleteFormValues}
+                setShowinputs={setShowinputs}
+              />
             </>
           )}
           {educationFormItems && !showInputs && (
