@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable default-case */
 /* eslint-disable react/react-in-jsx-scope */

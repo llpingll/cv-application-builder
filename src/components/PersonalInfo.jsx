@@ -3,6 +3,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import "../style.css";
+import InputContainer from "./InputContainer";
 
 function PersonalInfo({ saveFormValues }) {
   const form = "personalInfo";
@@ -62,52 +63,43 @@ function PersonalInfo({ saveFormValues }) {
           <i className="fa-solid fa-user" />
           <h2>Personal Information</h2>
         </div>
-        {/* <i className="fa-solid fa-caret-down" /> */}
       </div>
-      <div className="input-container">
-        <label htmlFor="fullname">Full Name:</label>
-        <input
-          value={fullName}
-          onChange={handleChange}
-          type="text"
-          id="fullname"
-          name="fullname"
-          placeholder="First and last name"
-        />
-      </div>
-      <div className="input-container">
-        <label htmlFor="email">Email</label>
-        <input
-          value={email}
-          onChange={(e) => handleChange(e)}
-          type="text"
-          id="email"
-          name="email"
-          placeholder="Johndoe@gmail.com"
-        />
-      </div>
-      <div className="input-container">
-        <label htmlFor="tel">Phone Number</label>
-        <input
-          value={tel}
-          onChange={(e) => handleChange(e)}
-          type="text"
-          id="tel"
-          name="tel"
-          placeholder="+555 5555 555"
-        />
-      </div>
-      <div className="input-container">
-        <label htmlFor="address">Address</label>
-        <input
-          value={address}
-          onChange={(e) => handleChange(e)}
-          type="text"
-          id="address"
-          name="address"
-          placeholder="City, Country"
-        />
-      </div>
+      <InputContainer
+        value={fullName}
+        handleChange={(e) => handleChange(e)}
+        type="text"
+        id="fullname"
+        name="fullname"
+        placeholder="First and last name"
+        label="Full Name"
+      />
+      <InputContainer
+        value={email}
+        handleChange={(e) => handleChange(e)}
+        type="text"
+        id="email"
+        name="email"
+        placeholder="johndoe@gmail.com"
+        label="Email"
+      />
+      <InputContainer
+        value={tel}
+        handleChange={(e) => handleChange(e)}
+        type="text"
+        id="tel"
+        name="tel"
+        placeholder="+555 5555 555"
+        label="Phone Number"
+      />
+      <InputContainer
+        value={address}
+        handleChange={(e) => handleChange(e)}
+        type="text"
+        id="address"
+        name="address"
+        placeholder="City, Country"
+        label="Address"
+      />
       <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
     </form>
   );

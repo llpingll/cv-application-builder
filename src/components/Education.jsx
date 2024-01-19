@@ -5,6 +5,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import "../style.css";
+import InputContainer from "./InputContainer";
 
 function Education({
   saveFormValues,
@@ -109,61 +110,51 @@ function Education({
           {/* If showInputs show input container */}
           {showInputs && (
             <>
-              <div className="input-container">
-                <label htmlFor="school">School</label>
-                <input
-                  value={school}
-                  onChange={handleChange}
-                  type="text"
-                  id="school"
-                  name="school"
-                  placeholder="First and last name"
-                />
-              </div>
-              <div className="input-container">
-                <label htmlFor="degree">Degree/Certificate</label>
-                <input
-                  value={degree}
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  id="degree"
-                  name="degree"
-                  placeholder="Enter Degree / Field of Study"
-                />
-              </div>
-              <div className="input-container">
-                <label htmlFor="location">Location</label>
-                <input
-                  value={location}
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  id="location"
-                  name="location"
-                  placeholder="Enter Location"
-                />
-              </div>
-              <div className="input-container">
-                <label htmlFor="start-date">Start Date</label>
-                <input
-                  value={startDate}
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  id="start-date"
-                  name="start-date"
-                  placeholder="Enter Start Date"
-                />
-              </div>
-              <div className="input-container">
-                <label htmlFor="end-date">End Date</label>
-                <input
-                  value={endDate}
-                  onChange={(e) => handleChange(e)}
-                  type="text"
-                  id="end-date"
-                  name="end-date"
-                  placeholder="Enter End Date"
-                />
-              </div>
+              <InputContainer
+                value={school}
+                handleChange={(e) => handleChange(e)}
+                type="text"
+                id="school"
+                name="school"
+                placeholder="Enter school / institution"
+                label="School"
+              />
+              <InputContainer
+                value={degree}
+                handleChange={(e) => handleChange(e)}
+                type="text"
+                id="degree"
+                name="degree"
+                placeholder="Enter Degree / Field of Study"
+                label="Degree/Certificate"
+              />
+              <InputContainer
+                value={location}
+                handleChange={(e) => handleChange(e)}
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter Location"
+                label="Location"
+              />
+              <InputContainer
+                value={startDate}
+                handleChange={(e) => handleChange(e)}
+                type="text"
+                id="start-date"
+                name="start-date"
+                placeholder="Enter Start Date"
+                label="Start Date"
+              />
+              <InputContainer
+                value={endDate}
+                handleChange={(e) => handleChange(e)}
+                type="text"
+                id="end-date"
+                name="end-date"
+                placeholder="Enter End Date"
+                label="End Date"
+              />
               <div className="button-container">
                 <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
                 <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
