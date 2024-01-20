@@ -32,7 +32,7 @@ function Cv({ basicFormValues, educationFormItems }) {
           <p className="cv-education-heading">Education</p>
           <div className="cv-education-info">
             {educationFormItems.map((item) => (
-              <div className="education-item" key={crypto.randomUUID()}>
+              <div className="education-item" key={item.id}>
                 <div>
                   <p className="dates">{`${item.startDate} - ${item.endDate}`}</p>
                   <p className="location">{item.location}</p>

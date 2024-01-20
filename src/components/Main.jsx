@@ -34,8 +34,8 @@ function Main() {
         // If educationFormEdit
         if (educationFormEdit) {
           setEducationFormItems(
-            educationFormItems.map((item, index) => {
-              if (index === educEditID) {
+            educationFormItems.map((item) => {
+              if (item.id === educEditID) {
                 return obj;
               }
               return item;
@@ -52,8 +52,8 @@ function Main() {
 
   function deleteFormValues() {
     setEducationFormItems(
-      educationFormItems.filter((item, index) => {
-        if (index !== educEditID) {
+      educationFormItems.filter((item) => {
+        if (item.id !== educEditID) {
           return item;
         }
       }),

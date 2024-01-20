@@ -19,7 +19,7 @@ function EditList({
           type="button"
           className="edit-item"
           onClick={() => {
-            handleEducationEdit(educationFormItems.indexOf(item));
+            handleEducationEdit(item.id);
             setShowinputs(true);
             setSchool(item.school);
             setDegree(item.degree);
@@ -27,8 +27,7 @@ function EditList({
             setStartDate(item.startDate);
             setEndDate(item.endDate);
           }}
-          id={educationFormItems.indexOf(item)}
-          key={crypto.randomUUID()}
+          key={item.id}
         >
           {item.school}
         </button>

@@ -76,6 +76,7 @@ function Education({
       location,
       startDate,
       endDate,
+      id: crypto.randomUUID(),
     };
       // saveFormValues function lives (is defined) in parent becuase all
       // forms use the same funcion therefore adhearing to DRY
