@@ -4,7 +4,7 @@
 /* eslint-disable default-case */
 /* eslint-disable react/react-in-jsx-scope */
 import "../style.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import Education from "./Education";
 import Cv from "./Cv";
@@ -15,9 +15,9 @@ function Main() {
   const [educationFormEdit, seteducationFormEdit] = useState(false);
   const [educEditID, setEducEditID] = useState(null);
 
-  useEffect(() => {
-    console.log(educationFormEdit);
-  }, [educationFormEdit]);
+  // useEffect(() => {
+  //   console.log(educationFormEdit);
+  // }, [educationFormEdit]);
 
   function handleEducationEdit(id) {
     seteducationFormEdit(!educationFormEdit);

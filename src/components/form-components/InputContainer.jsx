@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
-import "../style.css";
+import "../../style.css";
 
 function InputContainer({
   value, label, handleChange, type, id, name, placeholder,

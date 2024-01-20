@@ -6,10 +6,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import "../style.css";
-import InputContainer from "./InputContainer";
-import ButtonContainer from "./ButtonContainer";
-import EditList from "./EditList";
-import FormHeader from "./FormHeader";
+import InputContainer from "./form-components/InputContainer";
+import ButtonContainer from "./form-components/ButtonContainer";
+import EditList from "./form-components/EditList";
+import FormHeader from "./form-components/FormHeader";
 
 function Education({
   saveFormValues,

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
-import "../style.css";
+import "../../style.css";
 
 function FormHeader({
   heading,

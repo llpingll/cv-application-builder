@@ -3,7 +3,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import "../style.css";
-import InputContainer from "./InputContainer";
+import InputContainer from "./form-components/InputContainer";
 
 function PersonalInfo({ saveFormValues }) {
   const form = "personalInfo";
