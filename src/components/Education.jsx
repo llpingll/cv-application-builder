@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
@@ -7,6 +8,8 @@ import { useState } from "react";
 import "../style.css";
 import InputContainer from "./InputContainer";
 import ButtonContainer from "./ButtonContainer";
+import EditList from "./EditList";
+import FormHeader from "./FormHeader";
 
 function Education({
   saveFormValues,
@@ -94,21 +97,13 @@ function Education({
 
   return (
     <form action="#" onSubmit={onFormSubmit}>
-      <div className="form-header-container">
-        <div className="form-header">
-          <i className="fa-solid fa-user" />
-          <h2>Education</h2>
-        </div>
-        <i
-          className={expanded ? "fa-solid fa-angle-up"
-            : "fa-solid fa-angle-down"}
-          onClick={() => toggleExpanded()}
-        />
-      </div>
-      {/* If expanded, show content */}
+      <FormHeader
+        heading="Education"
+        expanded={expanded}
+        toggleExpanded={toggleExpanded}
+      />
       {expanded && (
         <>
-          {/* If showInputs show input container */}
           {showInputs && (
             <>
               <InputContainer
@@ -157,38 +152,26 @@ function Education({
                 label="End Date"
               />
               <ButtonContainer
-                // Props can be shorthanded as below instead of isFormFilled={isFormFilled}
-                isFormFilled={() => isFormFilled}
-                handleCancel={() => handleCancel}
-                clearInputs={() => clearInputs}
+                isFormFilled={isFormFilled}
+                handleCancel={handleCancel}
+                clearInputs={clearInputs}
+                setShowinputs={setShowinputs}
                 educationFormEdit={educationFormEdit}
                 deleteFormValues={deleteFormValues}
-                setShowinputs={setShowinputs}
               />
             </>
           )}
           {educationFormItems && !showInputs && (
-            <div className="edit-items">
-              {educationFormItems.map((item) => (
-                <button
-                  type="button"
-                  className="edit-item"
-                  onClick={() => {
-                    handleEducationEdit(educationFormItems.indexOf(item));
-                    setShowinputs(true);
-                    setSchool(item.school);
-                    setDegree(item.degree);
-                    setLocation(item.location);
-                    setStartDate(item.startDate);
-                    setEndDate(item.endDate);
-                  }}
-                  id={educationFormItems.indexOf(item)}
-                  key={crypto.randomUUID()}
-                >
-                  {item.school}
-                </button>
-              ))}
-            </div>
+            <EditList
+              educationFormItems={educationFormItems}
+              handleEducationEdit={handleEducationEdit}
+              setShowinputs={setShowinputs}
+              setSchool={setSchool}
+              setDegree={setDegree}
+              setLocation={setLocation}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+            />
           )}
           {!showInputs && (
             <button type="button" className="add" onClick={() => setShowinputs(true)}>+ Education</button>

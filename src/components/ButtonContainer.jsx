@@ -13,7 +13,7 @@ function ButtonContainer({
   return (
     <div className="button-container">
       <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
-      <button type="button" className="cancel" onClick={(e) => handleCancel(e)}>Cancel</button>
+      <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
       {educationFormEdit && (
       <button
         type="button"
