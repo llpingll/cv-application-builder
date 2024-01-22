@@ -9,7 +9,6 @@
 :root {
 	font-family: "Roboto", sans-serif;
 	color: black;
-	/* background-color: rgb(228, 227, 227); */
 	background-color: rgb(58, 58, 58);
 }
 
@@ -53,7 +52,7 @@ main div {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	overflow: auto;
-	height: 100vh;
+	height: 89vh;
 }
 
 form {
@@ -93,7 +92,6 @@ form {
 
 h2 {
 	font-size: 25px;
-	/* padding: 10px 0; */
 }
 
 .input-container {
@@ -202,7 +200,6 @@ input:focus {
 
 /* CV section */
 .cv-container {
-	/* border: 2px red solid; */
 	flex: 1 1 30%;
 	min-width: 300px;
 	max-width: 800px;
@@ -216,9 +213,7 @@ input:focus {
 }
 
 .cv > div {
-	border: 2px red solid;
-	/* flex: 1 1 auto; */
-	height: fit-content;
+	height: min-content;
 }
 
 /* CV Personal Info */
@@ -228,11 +223,9 @@ input:focus {
 	justify-content: center;
 	align-items: center;
 	flex: 0 0 115px;
-	/* height: 250px; */
 }
 
 .cv-fullname {
-	/* border: 2px solid blue; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -255,19 +248,21 @@ input:focus {
 }
 
 /* CV Education */
-.cv-education {
+.cv-education,
+.cv-experience {
 	padding: 30px 50px;
-	border: 5px blue solid;
 }
 
-.cv-education-heading {
+.cv-education-heading,
+.cv-experience-heading {
 	padding: 3px;
 	font-size: 20px;
 	font-weight: 600;
 	background-color: rgb(228, 227, 227);
 }
 
-.education-item {
+.education-item,
+.experience-item {
 	display: flex;
 	font-size: 18px;
 	text-align: left;
@@ -275,14 +270,16 @@ input:focus {
 	height: fit-content;
 }
 
-.education-item > div {
+.education-item > div,
+.experience-item > div {
 	display: flex;
 	flex-direction: column;
 	gap: 3px;
 	padding: 15px 0;
 }
 
-.institution {
+.institution,
+.company {
 	font-weight: 500;
 }
 

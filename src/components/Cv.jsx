@@ -26,9 +26,8 @@ function Cv({ basicFormValues, educationFormItems, expFormItems }) {
         </>
         )}
       </div>
-      <div className="cv-education">
-        {educationFormItems.length > 0 && (
-        <>
+      {educationFormItems.length > 0 && (
+        <div className="cv-education">
           <p className="cv-education-heading">Education</p>
           <div className="cv-education-info">
             {educationFormItems.map((item) => (
@@ -44,10 +43,27 @@ function Cv({ basicFormValues, educationFormItems, expFormItems }) {
               </div>
             ))}
           </div>
-        </>
-        )}
-      </div>
-      <div />
+        </div>
+      )}
+      {expFormItems.length > 0 && (
+        <div className="cv-experience">
+          <p className="cv-experience-heading">Experience</p>
+          <div className="cv-experience-info">
+            {expFormItems.map((item) => (
+              <div className="experience-item" key={item.id}>
+                <div>
+                  <p className="dates">{`${item.startDate} - ${item.endDate}`}</p>
+                  <p className="location">{item.location}</p>
+                </div>
+                <div>
+                  <p className="company">{item.company}</p>
+                  <p className="description">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
