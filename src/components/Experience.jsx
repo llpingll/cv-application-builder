@@ -11,19 +11,20 @@ import ButtonContainer from "./form-components/ButtonContainer";
 import EditList from "./form-components/EditList";
 import FormHeader from "./form-components/FormHeader";
 
-function Education({
+function Experience({
   saveFormValues,
-  educationFormItems,
-  handleEducationEdit,
-  educationFormEdit,
+  expFormItems,
+  handleExpEdit,
+  expFormEdit,
   deleteFormValues,
 }) {
-  const form = "education";
-  const [school, setSchool] = useState("");
-  const [degree, setDegree] = useState("");
+  const form = "experience";
+  const [company, setCompany] = useState("");
+  const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [description, setDescription] = useState("");
   const [expanded, setExpanded] = useState(false);
   const [showInputs, setShowinputs] = useState(false);
 
@@ -32,11 +33,11 @@ function Education({
     const { value } = e.target; // Same as const value = e.target.value;
     // eslint-disable-next-line default-case
     switch (name) {
-      case "school":
-        setSchool(value);
+      case "company":
+        setCompany(value);
         break;
-      case "degree":
-        setDegree(value);
+      case "title":
+        setTitle(value);
         break;
       case "location":
         setLocation(value);
@@ -47,6 +48,9 @@ function Education({
       case "end-date":
         setEndDate(value);
         break;
+      case "description":
+        setDescription(value);
+        break;
     }
     // e.preventDefault();
   }
@@ -56,26 +60,33 @@ function Education({
   }
 
   function isFormFilled() {
-    return school.length && degree.length && location.length && startDate.length && endDate.length;
+    return company.length
+    && title.length
+    && location.length
+    && startDate.length
+    && endDate.length
+    && description.length;
   }
 
   function clearInputs() {
-    setSchool("");
-    setDegree("");
+    setCompany("");
+    setTitle("");
     setLocation("");
     setStartDate("");
     setEndDate("");
+    setDescription("");
   }
 
   function onFormSubmit(e) {
     e.preventDefault();
     const formData = {
       form,
-      school,
-      degree,
+      company,
+      title,
       location,
       startDate,
       endDate,
+      description,
       id: crypto.randomUUID(),
     };
       // saveFormValues function lives (is defined) in parent becuase all
@@ -87,19 +98,20 @@ function Education({
   }
 
   function handleCancel() {
-    setSchool("");
-    setDegree("");
+    setCompany("");
+    setTitle("");
     setLocation("");
     setStartDate("");
     setEndDate("");
     setShowinputs(false);
-    if (educationFormEdit) handleEducationEdit(null);
+    setDescription("");
+    if (expFormEdit) handleExpEdit(null);
   }
 
   return (
     <form action="#" onSubmit={onFormSubmit}>
       <FormHeader
-        heading="Education"
+        heading="Experience"
         expanded={expanded}
         toggleExpanded={toggleExpanded}
       />
@@ -108,22 +120,22 @@ function Education({
           {showInputs && (
             <>
               <InputContainer
-                value={school}
+                value={company}
                 handleChange={(e) => handleChange(e)}
                 type="text"
-                id="school"
-                name="school"
-                placeholder="Enter school / institution"
-                label="School"
+                id="company"
+                name="company"
+                placeholder="Enter Company Name"
+                label="Company Name"
               />
               <InputContainer
-                value={degree}
+                value={title}
                 handleChange={(e) => handleChange(e)}
                 type="text"
-                id="degree"
-                name="degree"
-                placeholder="Enter Degree / Field of Study"
-                label="Degree/Certificate"
+                id="title"
+                name="title"
+                placeholder="Enter Job Title"
+                label="Job Title"
               />
               <InputContainer
                 value={location}
@@ -152,27 +164,37 @@ function Education({
                 placeholder="Enter End Date"
                 label="End Date"
               />
+              <InputContainer
+                value={description}
+                handleChange={(e) => handleChange(e)}
+                type="textarea"
+                id="description"
+                name="description"
+                placeholder="Enter Job Description"
+                label="Job Description"
+              />
               <ButtonContainer
                 isFormFilled={isFormFilled}
                 handleCancel={handleCancel}
                 clearInputs={clearInputs}
                 setShowinputs={setShowinputs}
-                educationFormEdit={educationFormEdit}
+                expFormEdit={expFormEdit}
                 deleteFormValues={deleteFormValues}
                 form={form}
               />
             </>
           )}
-          {educationFormItems && !showInputs && (
+          {expFormItems && !showInputs && (
             <EditList
-              educationFormItems={educationFormItems}
-              handleEducationEdit={handleEducationEdit}
+              expFormItems={expFormItems}
+              handleExpEdit={handleExpEdit}
               setShowinputs={setShowinputs}
-              setSchool={setSchool}
-              setDegree={setDegree}
+              setCompany={setCompany}
+              setTitle={setTitle}
               setLocation={setLocation}
               setStartDate={setStartDate}
               setEndDate={setEndDate}
+              setDescription={setDescription}
             />
           )}
           {!showInputs && (
@@ -184,4 +206,4 @@ function Education({
   );
 }
 
-export default Education;
+export default Experience;

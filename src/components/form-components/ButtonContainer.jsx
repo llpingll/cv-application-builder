@@ -6,9 +6,11 @@ function ButtonContainer({
   isFormFilled,
   handleCancel,
   educationFormEdit,
+  expFormEdit,
   deleteFormValues,
   setShowinputs,
   clearInputs,
+  form,
 }) {
   return (
     <div className="button-container">
@@ -19,7 +21,21 @@ function ButtonContainer({
         type="button"
         className="delete"
         onClick={() => {
-          deleteFormValues();
+          deleteFormValues(form);
+          setShowinputs(false);
+          clearInputs();
+        }}
+      >
+        Delete
+      </button>
+      )}
+
+      {expFormEdit && (
+      <button
+        type="button"
+        className="delete"
+        onClick={() => {
+          deleteFormValues(form);
           setShowinputs(false);
           clearInputs();
         }}

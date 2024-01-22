@@ -4,17 +4,23 @@ import "../../style.css";
 
 function EditList({
   educationFormItems,
+  expFormItems,
   handleEducationEdit,
+  handleExpEdit,
   setShowinputs,
   setSchool,
   setDegree,
-  setLocation,
   setStartDate,
   setEndDate,
+  setCompany,
+  setLocation,
+  setTitle,
+  setDescription,
 }) {
   return (
     <div className="edit-items">
-      {educationFormItems.map((item) => (
+      {educationFormItems
+      && educationFormItems.map((item) => (
         <button
           type="button"
           className="edit-item"
@@ -32,6 +38,27 @@ function EditList({
           {item.school}
         </button>
       ))}
+
+      {expFormItems
+        && expFormItems.map((item) => (
+          <button
+            type="button"
+            className="edit-item"
+            onClick={() => {
+              handleExpEdit(item.id);
+              setShowinputs(true);
+              setCompany(item.company);
+              setTitle(item.title);
+              setLocation(item.location);
+              setStartDate(item.startDate);
+              setEndDate(item.endDate);
+              setDescription(item.description);
+            }}
+            key={item.id}
+          >
+            {item.company}
+          </button>
+        ))}
     </div>
   );
 }

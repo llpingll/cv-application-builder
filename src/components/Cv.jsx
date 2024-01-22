@@ -2,7 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import "../style.css";
 
-function Cv({ basicFormValues, educationFormItems }) {
+function Cv({ basicFormValues, educationFormItems, expFormItems }) {
   return (
     <div className="cv">
       <div className="cv-personal-info">
