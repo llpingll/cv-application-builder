@@ -48,7 +48,6 @@ function Education({
         setEndDate(value);
         break;
     }
-    // e.preventDefault();
   }
 
   function toggleExpanded() {
@@ -78,10 +77,7 @@ function Education({
       endDate,
       id: crypto.randomUUID(),
     };
-      // saveFormValues function lives (is defined) in parent becuase all
-      // forms use the same funcion therefore adhearing to DRY
     saveFormValues(formData);
-    // reset all input fields after form submission
     clearInputs();
     setShowinputs(false);
   }

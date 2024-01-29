@@ -9,7 +9,7 @@
 :root {
 	font-family: "Roboto", sans-serif;
 	color: black;
-	background-color: rgb(58, 58, 58);
+	background-color: rgb(228, 227, 227);
 }
 
 #root {
@@ -52,7 +52,7 @@ main div {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	overflow: auto;
-	height: 89vh;
+	height: 87vh;
 }
 
 form {
