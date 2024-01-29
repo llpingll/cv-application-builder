@@ -17,6 +17,8 @@ function Experience({
   handleExpEdit,
   expFormEdit,
   deleteFormValues,
+  expanded,
+  toggleExpanded,
 }) {
   const form = "experience";
   const [company, setCompany] = useState("");
@@ -25,7 +27,6 @@ function Experience({
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [description, setDescription] = useState("");
-  const [expanded, setExpanded] = useState(false);
   const [showInputs, setShowinputs] = useState(false);
 
   function handleChange(e) {
@@ -52,10 +53,6 @@ function Experience({
         setDescription(value);
         break;
     }
-  }
-
-  function toggleExpanded() {
-    setExpanded(!expanded);
   }
 
   function isFormFilled() {

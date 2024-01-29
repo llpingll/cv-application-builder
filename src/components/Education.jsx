@@ -17,6 +17,8 @@ function Education({
   handleEducationEdit,
   educationFormEdit,
   deleteFormValues,
+  expanded,
+  toggleExpanded,
 }) {
   const form = "education";
   const [school, setSchool] = useState("");
@@ -24,7 +26,6 @@ function Education({
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [expanded, setExpanded] = useState(false);
   const [showInputs, setShowinputs] = useState(false);
 
   function handleChange(e) {
@@ -48,10 +49,6 @@ function Education({
         setEndDate(value);
         break;
     }
-  }
-
-  function toggleExpanded() {
-    setExpanded(!expanded);
   }
 
   function isFormFilled() {

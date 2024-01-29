@@ -18,7 +18,7 @@ function FormHeader({
       <i
         className={expanded ? "fa-solid fa-angle-up"
           : "fa-solid fa-angle-down"}
-        onClick={() => toggleExpanded()}
+        onClick={toggleExpanded}
       />
     </div>
   );

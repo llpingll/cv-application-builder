@@ -4,8 +4,9 @@
 import { useState } from "react";
 import "../style.css";
 import InputContainer from "./form-components/InputContainer";
+import FormHeader from "./form-components/FormHeader";
 
-function PersonalInfo({ saveFormValues }) {
+function PersonalInfo({ saveFormValues, toggleExpanded, expanded }) {
   const form = "personalInfo";
   const [fullName, setFullname] = useState("");
   const [email, setEmail] = useState("");
@@ -58,49 +59,52 @@ function PersonalInfo({ saveFormValues }) {
 
   return (
     <form action="#" onSubmit={onFormSubmit}>
-      <div className="form-header-container">
-        <div className="form-header">
-          <i className="fa-solid fa-user" />
-          <h2>Personal Information</h2>
-        </div>
-      </div>
-      <InputContainer
-        value={fullName}
-        handleChange={(e) => handleChange(e)}
-        type="text"
-        id="fullname"
-        name="fullname"
-        placeholder="First and last name"
-        label="Full Name"
+      <FormHeader
+        heading="Personal Information"
+        expanded={expanded}
+        toggleExpanded={toggleExpanded}
       />
-      <InputContainer
-        value={email}
-        handleChange={(e) => handleChange(e)}
-        type="text"
-        id="email"
-        name="email"
-        placeholder="johndoe@gmail.com"
-        label="Email"
-      />
-      <InputContainer
-        value={tel}
-        handleChange={(e) => handleChange(e)}
-        type="text"
-        id="tel"
-        name="tel"
-        placeholder="+555 5555 555"
-        label="Phone Number"
-      />
-      <InputContainer
-        value={address}
-        handleChange={(e) => handleChange(e)}
-        type="text"
-        id="address"
-        name="address"
-        placeholder="City, Country"
-        label="Address"
-      />
-      <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
+      {expanded && (
+        <>
+          <InputContainer
+            value={fullName}
+            handleChange={(e) => handleChange(e)}
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="First and last name"
+            label="Full Name"
+          />
+          <InputContainer
+            value={email}
+            handleChange={(e) => handleChange(e)}
+            type="text"
+            id="email"
+            name="email"
+            placeholder="johndoe@gmail.com"
+            label="Email"
+          />
+          <InputContainer
+            value={tel}
+            handleChange={(e) => handleChange(e)}
+            type="text"
+            id="tel"
+            name="tel"
+            placeholder="+555 5555 555"
+            label="Phone Number"
+          />
+          <InputContainer
+            value={address}
+            handleChange={(e) => handleChange(e)}
+            type="text"
+            id="address"
+            name="address"
+            placeholder="City, Country"
+            label="Address"
+          />
+          <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
+        </>
+      )}
     </form>
   );
 }

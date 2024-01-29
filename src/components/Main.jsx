@@ -18,6 +18,7 @@ function Main() {
   const [expFormItems, setExpFormItems] = useState([]);
   const [expFormEdit, setExpFormEdit] = useState(false);
   const [expEditID, setExpEditID] = useState(null);
+  const [expanded, setExpanded] = useState(null);
 
   function handleEducationEdit(id) {
     setEducationFormEdit(!educationFormEdit);
@@ -99,14 +100,46 @@ function Main() {
     }
   }
 
+  function toggleExpanded(index) {
+    switch (index) {
+      case 0:
+        if (expanded === 0) {
+          setExpanded(null);
+        } else {
+          setExpanded(0);
+        }
+        break;
+
+      case 1:
+        if (expanded === 1) {
+          setExpanded(null);
+        } else {
+          setExpanded(1);
+        }
+        break;
+
+      case 2:
+        if (expanded === 2) {
+          setExpanded(null);
+        } else {
+          setExpanded(2);
+        }
+        break;
+    }
+  }
+
   return (
     <main>
 
       <div className="forms-container">
         <PersonalInfo
+          toggleExpanded={() => toggleExpanded(0)}
           saveFormValues={saveFormValues}
+          expanded={expanded === 0}
         />
         <Education
+          toggleExpanded={() => toggleExpanded(1)}
+          expanded={expanded === 1}
           saveFormValues={saveFormValues}
           deleteFormValues={deleteFormValues}
           handleEducationEdit={handleEducationEdit}
@@ -114,6 +147,8 @@ function Main() {
           educationFormEdit={educationFormEdit} // Being edited boolean
         />
         <Experience
+          toggleExpanded={() => toggleExpanded(2)}
+          expanded={expanded === 2}
           saveFormValues={saveFormValues}
           deleteFormValues={deleteFormValues}
           handleExpEdit={handleExpEdit}
