@@ -8,14 +8,25 @@ function InputContainer({
   return (
     <div className="input-container">
       <label htmlFor={id}>{label}</label>
-      <input
-        value={value}
-        onChange={handleChange}
-        type={type}
-        id={id}
-        name={name}
-        placeholder={placeholder}
-      />
+      {type === "text" ? (
+        <input
+          value={value}
+          onChange={handleChange}
+          type={type}
+          id={id}
+          name={name}
+          placeholder={placeholder}
+        />
+      ) : (
+        <textarea
+          value={value}
+          onChange={handleChange}
+          type={type}
+          id={id}
+          name={name}
+          placeholder={placeholder}
+        />
+      )}
     </div>
   );
 }

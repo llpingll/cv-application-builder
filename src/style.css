@@ -107,13 +107,19 @@ label {
 	font-weight: 500;
 }
 
-input {
+input,
+textarea {
 	background-color: rgb(228, 227, 227);
 	font-size: 16px;
 	padding: 0 15px;
 	height: 45px;
 	border-radius: 15px;
 	border: none;
+}
+
+.input-container textarea {
+	height: 85px;
+	padding: 15px;
 }
 
 textarea:focus,
