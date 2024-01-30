@@ -127,6 +127,8 @@ input:focus {
 }
 
 /* Input buttons common values */
+.clear,
+.load,
 .save,
 .cancel,
 .delete {
@@ -150,8 +152,14 @@ input:focus {
 	cursor: not-allowed;
 }
 
+/* Load button */
+.load {
+	background-color: forestgreen;
+}
+
 /* Cancel button */
-.cancel {
+.cancel,
+.clear {
 	color: rgb(117, 117, 117);
 	background-color: whitesmoke;
 	border: 1px solid rgb(117, 117, 117);
@@ -250,7 +258,7 @@ input:focus {
 /* CV Education */
 .cv-education,
 .cv-experience {
-	padding: 30px 50px;
+	padding: 0 30px 20px;
 }
 
 .cv-education-heading,
@@ -268,6 +276,11 @@ input:focus {
 	text-align: left;
 	gap: 28px;
 	height: fit-content;
+}
+
+.education-item > :first-child,
+.experience-item > :first-child {
+	min-width: 208px;
 }
 
 .education-item > div,

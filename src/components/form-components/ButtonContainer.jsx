@@ -11,11 +11,27 @@ function ButtonContainer({
   setShowinputs,
   clearInputs,
   form,
+  clearExample,
+  loadExample,
 }) {
   return (
     <div className="button-container">
       <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
-      <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
+
+      {form === "personalInfo" && (
+        <>
+          <button type="button" className="clear" onClick={clearExample}>Clear All</button>
+          <button type="button" className="load" onClick={loadExample}>Load e.g.</button>
+        </>
+      )}
+
+      {form === "education" && (
+        <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
+      )}
+      {form === "experience" && (
+        <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
+      )}
+
       {educationFormEdit && (
       <button
         type="button"

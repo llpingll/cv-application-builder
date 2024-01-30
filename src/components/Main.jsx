@@ -9,6 +9,7 @@ import PersonalInfo from "./PersonalInfo";
 import Education from "./Education";
 import Cv from "./Cv";
 import Experience from "./Experience";
+import exampleData from "../data";
 
 function Main() {
   const [basicFormValues, setBasicFormValues] = useState("");
@@ -18,7 +19,24 @@ function Main() {
   const [expFormItems, setExpFormItems] = useState([]);
   const [expFormEdit, setExpFormEdit] = useState(false);
   const [expEditID, setExpEditID] = useState(null);
-  const [expanded, setExpanded] = useState(null);
+  const [expanded, setExpanded] = useState(0);
+
+  function clearExample() {
+    setBasicFormValues("");
+    setEducationFormItems("");
+    setExpFormItems("");
+
+    setEducEditID(null);
+    setExpEditID(null);
+    setEducationFormEdit(false);
+    setExpFormEdit(false);
+  }
+
+  function loadExample() {
+    setBasicFormValues(exampleData.personalInfo);
+    setEducationFormItems(exampleData.education);
+    setExpFormItems(exampleData.experience);
+  }
 
   function handleEducationEdit(id) {
     setEducationFormEdit(!educationFormEdit);
@@ -133,6 +151,8 @@ function Main() {
 
       <div className="forms-container">
         <PersonalInfo
+          loadExample={loadExample}
+          clearExample={clearExample}
           toggleExpanded={() => toggleExpanded(0)}
           saveFormValues={saveFormValues}
           expanded={expanded === 0}

@@ -5,8 +5,15 @@ import { useState } from "react";
 import "../style.css";
 import InputContainer from "./form-components/InputContainer";
 import FormHeader from "./form-components/FormHeader";
+import ButtonContainer from "./form-components/ButtonContainer";
 
-function PersonalInfo({ saveFormValues, toggleExpanded, expanded }) {
+function PersonalInfo({
+  saveFormValues,
+  toggleExpanded,
+  expanded,
+  clearExample,
+  loadExample,
+}) {
   const form = "personalInfo";
   const [fullName, setFullname] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +38,6 @@ function PersonalInfo({ saveFormValues, toggleExpanded, expanded }) {
         setAddress(value);
         break;
     }
-    // e.preventDefault();
   }
 
   function isFormFilled() {
@@ -47,8 +53,6 @@ function PersonalInfo({ saveFormValues, toggleExpanded, expanded }) {
       tel,
       address,
     };
-    // saveFormValues function lives (is defined) in parent becuase all
-    // forms use the same funcion therefore adhearing to DRY
     saveFormValues(formData);
     // reset all input fields after form submission
     setFullname("");
@@ -102,7 +106,17 @@ function PersonalInfo({ saveFormValues, toggleExpanded, expanded }) {
             placeholder="City, Country"
             label="Address"
           />
-          <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
+          <ButtonContainer
+            isFormFilled={isFormFilled}
+            form={form}
+            clearExample={clearExample}
+            loadExample={loadExample}
+          />
+          {/* <button type="submit" className="save" disabled={!isFormFilled()}>Save</button>
+          <div className="example">
+          <button type="button" className="clear">Clear</button>
+          <button type="button" className="load">Load</button>
+          </div> */}
         </>
       )}
     </form>
